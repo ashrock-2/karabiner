@@ -4,29 +4,6 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Convert to en when left_control + [",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "input_sources": [{ "language": "ko" }],
-                                        "type": "input_source_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "open_bracket",
-                                    "modifiers": {
-                                        "mandatory": ["left_control"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "key_code": "escape" }],
-                                "to_after_key_up": [{ "select_input_source": { "language": "en" } }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Convert to en when left_control + c",
                         "manipulators": [
                             {
@@ -43,8 +20,16 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "key_code": "escape" }],
-                                "to_after_key_up": [{ "select_input_source": { "language": "en" } }],
+                                "to": [
+                                    {
+                                        "key_code": "c",
+                                        "modifiers": ["left_control"]
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    { "select_input_source": { "language": "en" } },
+                                    { "key_code": "escape" }
+                                ],
                                 "type": "basic"
                             }
                         ]
